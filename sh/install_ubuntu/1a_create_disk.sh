@@ -13,6 +13,7 @@ source "$_DIR/com/com.sh"
 
 # ディスク切断
 unset_device "$_DISK_IMG_PATH"
+sudo rm "$_DISK_IMG_PATH"
 
 # ディスク作成
 dd if=/dev/zero of="$_DISK_IMG_PATH" bs=1G count="$_TOTAL_GSIZE"

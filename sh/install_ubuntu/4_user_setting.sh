@@ -11,13 +11,12 @@ source "$_DIR/com/com.sh"
 bash "$_DIR/com/mount.sh"
 bash "$_DIR/com/sys_setup.sh"
 
-# 日付、地域、キーボードの設定
-sudo chroot "$_MNT_POINT" << EOF
-    dpkg-reconfigure tzdata
-    dpkg-reconfigure locales
-    dpkg-reconfigure keyboard-configuration
-    exit
-EOF
+# 最小のubuntuのインストール
+sudo chroot "$_MNT_POINT" apt install -y --no-install-recommends ubuntu-minimal
+
+sudo chroot "$_MNT_POINT" dpkg-reconfigure tzdata
+sudo chroot "$_MNT_POINT" dpkg-reconfigure locales
+sudo chroot "$_MNT_POINT" dpkg-reconfigure keyboard-configuration
 
 # localhostの指定
 sudo chroot "$_MNT_POINT" << EOF

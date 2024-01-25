@@ -18,10 +18,8 @@ sudo chroot "$_MNT_POINT" << EOF
         linux-image-$_KERNEL_VER-generic \
         linux-headers-$_KERNEL_VER-generic \
         linux-modules-$_KERNEL_VER-generic \
-        linux-modules-extra-$_KERNEL_VER-generic \
-        ubuntu-minimal \
-        initramfs-tools \
-        $_KERNEL_OTHER_INSTALL
+        linux-modules-extra-$_KERNEL_VER-generic
+    apt install -y initramfs-tools $_KERNEL_OTHER_INSTALL
     update-initramfs -c -k all
     exit
 EOF
