@@ -57,36 +57,35 @@ function set_partion(){
     swap_size=$5
 
     # 初期化
-    sudo sgdisk --zap-all "$disk"
+    sudo sgdisk --zap-all "$disk";sudo partprobe
 
     # 作成
-    sudo sgdisk --new '1::+1M' "$disk"
-    sudo sgdisk --new "2::+$efi_size" "$disk"
-    sudo sgdisk --new "3::+$boot_size" "$disk"
-    sudo sgdisk --new "4::+$root_size" "$disk"
+    sudo sgdisk --new '1::+1M' "$disk";sudo partprobe
+    sudo sgdisk --new "2::+$efi_size" "$disk";sudo partprobe
+    sudo sgdisk --new "3::+$boot_size" "$disk";sudo partprobe
+    sudo sgdisk --new "4::+$root_size" "$disk";sudo partprobe
     if [[ "$swap_size" != 'no' ]]; then
-        sudo sgdisk --new "5::+$swap_size" "$disk"
+        sudo sgdisk --new "5::+$swap_size" "$disk";sudo partprobe
     fi
 
     # パーティションコード指定
-    sudo sgdisk --typecode 1:ef02 "$disk"
-    sudo sgdisk --typecode 2:ef00 "$disk"
-    sudo sgdisk --typecode 3:8300 "$disk"
-    sudo sgdisk --typecode 4:8300 "$disk"
+    sudo sgdisk --typecode 1:ef02 "$disk";sudo partprobe
+    sudo sgdisk --typecode 2:ef00 "$disk";sudo partprobe
+    sudo sgdisk --typecode 3:8300 "$disk";sudo partprobe
+    sudo sgdisk --typecode 4:8300 "$disk";sudo partprobe
     if [[ "$swap_size" != 'no' ]]; then
-        sudo sgdisk --typecode 5:8200 "$disk"
+        sudo sgdisk --typecode 5:8200 "$disk";sudo partprobe
     fi
 
     # 名前付け
-    sudo sgdisk --change-name '1:biosgrub' "$disk"
-    sudo sgdisk --change-name '2:efi' "$disk"
-    sudo sgdisk --change-name '3:boot' "$disk"
-    sudo sgdisk --change-name '4:root' "$disk"
+    sudo sgdisk --change-name '1:biosgrub' "$disk";sudo partprobe
+    sudo sgdisk --change-name '2:efi' "$disk";sudo partprobe
+    sudo sgdisk --change-name '3:boot' "$disk";sudo partprobe
+    sudo sgdisk --change-name '4:root' "$disk";sudo partprobe
     if [[ "$swap_size" != 'no' ]]; then
-        sudo sgdisk --change-name '5:swap' "$disk"
+        sudo sgdisk --change-name '5:swap' "$disk";sudo partprobe
     fi
 
-    sudo partprobe
 }
 
 # ディスクとパーティションラベルからpartuuidを取得する
