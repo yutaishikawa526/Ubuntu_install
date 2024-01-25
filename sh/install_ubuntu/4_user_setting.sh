@@ -29,5 +29,18 @@ EOF
 echo "----------- Enter root password -----------"
 sudo chroot "$_MNT_POINT" passwd
 
+# ネットワーク設定
+sudo chroot "$_MNT_POINT" << EOF
+    systemctl enable systemd-networkd
+    {
+        echo '[Match]'
+        echo "Name=$_NW_INTERFACE"
+        echo ''
+        echo '[Network]'
+        echo 'DHCP=yes'
+    } > /etc/systemd/network/ethernet.network
+    exit
+EOF
+
 # umount
 bash "$_DIR/com/unset.sh"

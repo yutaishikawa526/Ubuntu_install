@@ -23,7 +23,9 @@
 2. `sudo apt-get --purge remove cuda-*`で既存のCUDAのアンインストール
 3. `sudo add-apt-repository ppa:graphics-drivers/ppa`でリポジトリ登録
 4. `sudo apt update`
-5. `sudo apt install -y nvidia-driver-535`でドライバーインストール(535は`ubuntu-drivers devices`でrecommendとなっているものにする)
+5. `sudo apt install -y nvidia-driver-535`でドライバーインストール
+    - 535は`ubuntu-drivers devices`でrecommendとなっているものにする
+    - `ubuntu-drivers`は`sudo apt install -y ubuntu-drivers-common`でインストール
 6. `sudo reboot`再起動
 7. `nvidia-smi`で確認
 

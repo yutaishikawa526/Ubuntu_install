@@ -19,6 +19,10 @@ _KERNEL_VER='5.15.0-25'
 # その他で追加でインストールするパッケージ
 _KERNEL_OTHER_INSTALL=''
 
+# イーサネットのインターフェース名
+# [ip a]コマンドで確認する
+_NW_INTERFACE=enp0s25
+
 # [grub-install]で指定するターゲット
 _GRUB_TARGET=x86_64-efi
 
