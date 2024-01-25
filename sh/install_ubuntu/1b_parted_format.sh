@@ -10,8 +10,6 @@ source "$_DIR/conf/conf_mnt.sh"
 source "$_DIR/conf/conf_part.sh"
 source "$_DIR/com/com.sh"
 
-check_func 'findfs' 'util-linux'
-
 # パーティション分け実行
 set_partion "$_DISK_BASE" "$_EFI_SIZE" "$_BOOT_SIZE" "$_ROOT_SIZE" "$_SWAP_SIZE"
 
