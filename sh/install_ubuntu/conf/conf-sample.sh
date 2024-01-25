@@ -3,7 +3,7 @@
 # 設定ファイル
 
 # ディスクイメージ
-_DISK_BASE=/dev/sda
+_DISK_BASE=/dev/sdXXX
 
 # マウントポイント
 _MNT_POINT=/mnt

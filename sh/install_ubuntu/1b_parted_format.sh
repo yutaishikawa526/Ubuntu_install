@@ -17,4 +17,4 @@ set_partion "$_DISK_BASE" "$_EFI_SIZE" "$_BOOT_SIZE" "$_ROOT_SIZE" "$_SWAP_SIZE"
 set_format "$_DISK_BASE"
 
 # 設定ファイルの書き換え
-set_conf_by_device "$_DISK_BASE"
+set_conf_by_device "$_DISK_BASE" "$_DIR/conf"
