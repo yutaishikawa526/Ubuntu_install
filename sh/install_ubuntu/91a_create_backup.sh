@@ -23,5 +23,6 @@ sudo mkdir "$backup_dir"
 
 # umount
 bash "$_DIR/com/unset.sh"
+unset_device "$_DISK_IMG_PATH"
 
 sudo cp "$_DISK_IMG_PATH" "$backup_dir"

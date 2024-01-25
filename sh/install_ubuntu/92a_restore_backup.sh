@@ -25,4 +25,5 @@ fi
 # umount
 bash "$_DIR/com/unset.sh"
 
-sudo cp "$backup_file" "$_DIR/disk"
+unset_device "$_DISK_IMG_PATH"
+sudo cp "$backup_file" "$_DISK_IMG_PATH"
