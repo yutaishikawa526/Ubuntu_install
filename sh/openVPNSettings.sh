@@ -5,9 +5,17 @@
 ## 参考サイト: https://zenn.dev/noraworld/articles/openvpn-installation-and-setup-guidebook
 
 ## パッケージインストール
-sudo apt -y install openvpn git
-mkdir ~/openVPNSettings
+sudo apt -y install openvpn git ufw
+
+## ポート番号を設定
+echo '--------------------'
+echo 'ポート番号を入力してください'
+read -p ':' _PORT_NUMBER
+
+## easy-rsaのclone
+mkdir -p ~/openVPNSettings
 cd ~/openVPNSettings
+rm -R easy-rsa || true
 git clone https://github.com/OpenVPN/easy-rsa.git
 cd easy-rsa/easyrsa3
 
@@ -33,7 +41,7 @@ sudo chmod o+r /etc/openvpn/crl.pem
 ## vpnサーバー設定
 sudo touch /etc/openvpn/server.conf
 {
-    echo 'port   1194'
+    echo "port   $_PORT_NUMBER"
     echo 'proto  udp'
     echo 'dev    tun'
     echo ''
@@ -46,10 +54,6 @@ sudo touch /etc/openvpn/server.conf
     echo 'ifconfig-pool-persist ipp.txt'
     echo ''
     echo 'server 10.8.0.0 255.255.255.0'
-    echo ''
-    echo 'push "redirect-gateway def1 bypass-dhcp"'
-    echo 'push "route 10.8.0.0 255.255.255.0"'
-    echo 'push "dhcp-option DNS 8.8.8.8"'
     echo ''
     echo 'keepalive 10 120'
     echo ''
@@ -67,7 +71,7 @@ sudo touch /etc/openvpn/server.conf
 } | sudo sh -c 'cat - > /etc/openvpn/server.conf'
 
 ## ファイアーウォール設定
-sudo ufw allow 1194/udp
+sudo ufw allow "$_PORT_NUMBER/udp"
 sudo ufw enable
 
 ## openVPNの起動とサービス登録
@@ -83,6 +87,6 @@ cp pki/private/vpn_client.key ~/openVPNSettings
 
 ## 掃除
 cd ~/openVPNSettings
-sudo rm -R easy-rsa
+rm -R easy-rsa
 
 # fin

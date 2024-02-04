@@ -5,22 +5,23 @@
 
 ## sshサーバーのインストール
 sudo apt -y update
-sudo apt -y install openssh-server
+sudo apt -y install openssh-server ufw
 
-mkdir ~/sshSettings
+mkdir -p ~/sshSettings
 cd ~/sshSettings
 
 ## ホームディレクトリ
 HOME_DIR=`cd ~;pwd`
+mkdir -p "$HOME_DIR/.ssh"
 AUTH_KEY_PATH="$HOME_DIR/.ssh/authorized_keys"
 
 ## 自動起動設定
 sudo systemctl enable ssh
 
 ## クライアント用秘密鍵、公開鍵の作成
-ssh-keygen -t rsa -b 2048  -C ''  -f id_rsa_ssh_main
-sudo touch "$AUTH_KEY_PATH"
-cat id_rsa_ssh_main.pub | sudo sh -c 'cat - >> '"$AUTH_KEY_PATH"
+ssh-keygen -t rsa -b 2048  -C '' -f id_rsa_ssh_main
+touch "$AUTH_KEY_PATH"
+cat id_rsa_ssh_main.pub >> "$AUTH_KEY_PATH"
 sudo chmod 600 "$AUTH_KEY_PATH"
 
 ## 設定ファイルの修正
