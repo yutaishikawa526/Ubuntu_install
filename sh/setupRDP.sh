@@ -5,7 +5,7 @@
 # 使用する場合はssh接続で有効化して使用する
 
 sudo apt update -y
-sudo apt install -y xrdp
+sudo apt install -y xrdp ufw
 
 sudo ufw allow from '10.8.0.0/24' to any port 3389 proto tcp
 sudo ufw enable
