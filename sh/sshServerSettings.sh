@@ -76,7 +76,7 @@ sudo chmod 600 "$AUTH_KEY_PATH"
 rm id_rsa_ssh_main.pub
 
 ## ファイアーウォール設定
-sudo ufw allow 22/tcp
+sudo ufw allow from '10.8.0.0/24' to any port 22 proto tcp
 sudo ufw enable
 
 ## 再起動

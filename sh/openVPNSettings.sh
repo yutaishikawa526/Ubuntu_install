@@ -71,7 +71,8 @@ sudo touch /etc/openvpn/server.conf
 } | sudo sh -c 'cat - > /etc/openvpn/server.conf'
 
 ## ファイアーウォール設定
-sudo ufw allow "$_PORT_NUMBER/udp"
+sudo ufw limit from '0.0.0.0/0' to any port "$_PORT_NUMBER" proto udp
+sudo ufw deny from '0:0:0:0:0:0:0:0/0' to any port "$_PORT_NUMBER" proto udp
 sudo ufw enable
 
 ## openVPNの起動とサービス登録
