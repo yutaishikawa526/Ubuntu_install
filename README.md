@@ -1,4 +1,4 @@
-# UbuntuSettings
+# Ubuntu_install
 
 ## 概要
 - ubuntuのデスクトップインストール手順からインストール後の諸々設定手順を記述
@@ -47,6 +47,13 @@
     - クライアントの設定項目
         - ipアドレスは10.8.0.1(VPN接続中なら)
         - ポートは22
+
+## その他
+- [dockerインストール](https://www.kagoya.jp/howto/cloud/container/dockerubuntu/)
+- [VSCodeインストール](https://qiita.com/yoshiyasu1111/items/e21a77ed68b52cb5f7c8)
+- [イヤホンの認識しない問題](https://qiita.com/ocean_f/items/e3c4310eafc001227c8a)
+- firefoxの日本語表示がおかしい問題
+    - `sudo snap remove firefox`のあと`sudo apt install firefox firefox-locale-ja`で日本語が使えるようになった
 
 ## 参考サイト
 - [パーティション作成](https://qiita.com/kakkie/items/8f960f2dc5eb6e591d9d)
