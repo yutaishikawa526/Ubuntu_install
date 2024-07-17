@@ -58,3 +58,11 @@ mountをし、chrootをする。exit後、umountまで行う
     - `ubuntu-minimal`をインストールしているが、なくても起動は可能ただしその場合は`4_user_setting.sh`で使用している`systemd-networkd`や`dpkg-reconfigure *`が使えなかったため導入した
     - `linux-headers`はdkmsを使用するのに必要で、nvidiaのdriverを適用させるのに必要
     - `linux-modules-extra`も同様の理由で入れておく。なお`linux-modules`は`linux-image`のインストールでデフォルトで入る
+
+# 参考サイト
+- [パーティション作成](https://qiita.com/kakkie/items/8f960f2dc5eb6e591d9d)
+- [ドライバー確認](https://qiita.com/aosho235/items/079b37a9485041b96ed0)
+- [Ubuntuの手動インストール](https://gist.github.com/subrezon/9c04d10635ebbfb737816c5196c8ca24)
+- [debootstrapのvariantによる違いについて](https://zat.ifdef.jp/html/2008/04-03.html)
+- [man debootstrapの情報が記載](https://linux.die.net/man/8/debootstrap)
+- [aptのsource.listについて](https://gihyo.jp/admin/serial/01/ubuntu-recipe/0677)
