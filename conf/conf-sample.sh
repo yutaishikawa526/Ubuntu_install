@@ -31,3 +31,12 @@ _GRUB_EFI_PACKAGE=grub-efi-amd64
 
 # ディスクイメージファイルのフルパス
 _DISK_IMG_PATH="$_DIR/disk/img.raw"
+
+# /etc/apt/sources.listに設置されるミラーサイトの中身
+_APT_SOURCE_LIST=$(cat << EOF
+# jammyのときのサンプル
+deb http://de.archive.ubuntu.com/ubuntu jammy           main restricted universe
+deb http://de.archive.ubuntu.com/ubuntu jammy-security  main restricted universe
+deb http://de.archive.ubuntu.com/ubuntu jammy-updates   main restricted universe
+EOF
+)

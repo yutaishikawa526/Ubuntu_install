@@ -29,11 +29,7 @@ sudo debootstrap $_DEB_OPTION "$_DEB_NAME" "$_MNT_POINT" http://de.archive.ubunt
 } | sudo sh -c "cat > $_MNT_POINT/etc/fstab"
 
 # aptのミラーサイト設定
-{
-    echo 'deb http://de.archive.ubuntu.com/ubuntu jammy           main restricted universe'
-    echo 'deb http://de.archive.ubuntu.com/ubuntu jammy-security  main restricted universe'
-    echo 'deb http://de.archive.ubuntu.com/ubuntu jammy-updates   main restricted universe'
-} | sudo sh -c "cat > $_MNT_POINT/etc/apt/sources.list"
+echo "$_APT_SOURCE_LIST" | sudo sh -c "cat > $_MNT_POINT/etc/apt/sources.list"
 
 # umount
 bash "$_DIR/com/unset.sh"
